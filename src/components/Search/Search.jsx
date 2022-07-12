@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { baseUrls, apiKeys } from 'constants/api';
 
 import { SearchForm, LocalWeather } from 'components';
+
 import { Container } from './styled';
 
 const Search = () => {
