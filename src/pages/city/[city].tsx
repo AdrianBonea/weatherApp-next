@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import type { NextPage } from 'next';
 
-import { baseUrls } from '@constants/api';
+import { baseUrls, apiKeys } from '@constants/api';
 import { TodayWeather } from '@components';
 import { useAuth } from '@hooks';
 import cities from 'constants/city.list.min.json';
@@ -69,7 +69,7 @@ export async function getServerSideProps(context: {
   }
   // fetch data for current weather
   const resultLiveWeather = await fetch(
-    `${baseUrls.live}?lat=${city.coord.lat}&lon=${city.coord.lon}&${baseUrls.unit}&appid=${process.env.API_KEY}`
+    `${baseUrls.live}?lat=${city.coord.lat}&lon=${city.coord.lon}&${baseUrls.unit}&appid=${apiKeys.openWeatherMap}`
   );
   const liveData = await resultLiveWeather.json();
   return {
