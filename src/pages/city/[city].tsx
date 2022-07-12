@@ -8,7 +8,7 @@ import { TodayWeather } from '@components';
 import { useAuth } from '@hooks';
 import cities from 'constants/city.list.min.json';
 
-import { Container } from './styled';
+import { Container } from 'styles/styledCity';
 
 // @ts-ignore
 const City: NextPage = ({ liveData }: object) => {
