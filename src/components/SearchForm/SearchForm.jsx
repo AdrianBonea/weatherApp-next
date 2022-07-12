@@ -20,12 +20,12 @@ import {
 const SearchForm = () => {
   const dispatch = useDispatch();
   const { handleSubmit, register, errors } = useSearchForm();
+  // eslint-disable-next-line no-console
   const onSubmit = data => console.log(data);
 
   const [query, setQuery] = useState('');
   const [result, setResult] = useState([]);
   const [history] = useState(fiveCityList);
-  console.log(history);
 
   // const cities = useAllCityList(); exced the limit of localStorage, so I need to use the slow and ugly way :(
   // console.log(cities);
