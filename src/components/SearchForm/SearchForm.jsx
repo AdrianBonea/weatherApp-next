@@ -6,6 +6,7 @@ import { CityList } from 'components';
 import { useSearchForm } from '@hooks';
 import { authActions } from 'store/authSlice';
 import cities from 'constants/city.list.min.json';
+import fiveCityList from 'constants/fiveCityList';
 
 import {
   StyledError,
@@ -23,6 +24,8 @@ const SearchForm = () => {
 
   const [query, setQuery] = useState('');
   const [result, setResult] = useState([]);
+  const [history] = useState(fiveCityList);
+  console.log(history);
 
   // const cities = useAllCityList(); exced the limit of localStorage, so I need to use the slow and ugly way :(
   // console.log(cities);
@@ -66,7 +69,7 @@ const SearchForm = () => {
                     <Link type="submit" href={`/city/${item.slug}`}>
                       <StyledLink
                         onClick={() => {
-                          console.log(item);
+                          history.unshift(item); // not rly sure why it works, I feel like I am doing something illegal
                         }}
                       >
                         {item.name}
@@ -82,7 +85,7 @@ const SearchForm = () => {
                 .slice(0, 5)}
           </StyledUl>
         ) : (
-          <CityList />
+          <CityList history={history} />
         )}
       </StyledSearchForm>
       <button type="submit" onClick={handleClick}>

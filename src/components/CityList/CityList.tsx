@@ -1,18 +1,20 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
 
-import fiveCityList from 'constants/fiveCityList';
-
 import { StyledCityList, StyledCityListItem } from './styled';
 
-const CityList: FunctionComponent = () => {
+// @ts-ignore
+const CityList: FunctionComponent = ({ history }) => {
   return (
     <StyledCityList>
-      {fiveCityList.map(city => (
-        <StyledCityListItem value={city.id} key={city.id}>
-          <Link href={`/city/${city.slug}`}>{city.name}</Link>
-        </StyledCityListItem>
-      ))}
+      {history
+        // @ts-ignore
+        .map(city => (
+          <StyledCityListItem value={city.id} key={city.id}>
+            <Link href={`/city/${city.slug}`}>{city.name}</Link>
+          </StyledCityListItem>
+        ))
+        .slice(0, 5)}
     </StyledCityList>
   );
 };
