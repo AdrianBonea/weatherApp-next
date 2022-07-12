@@ -50,6 +50,10 @@ const SearchForm = () => {
     dispatch(authActions.logout());
   };
 
+  const handleClickCity = city => {
+    history.unshift(city); // not rly sure why it works, I feel like I am doing something illegal
+  };
+
   return (
     <>
       <StyledSearchForm onSubmit={handleSubmit(onSubmit)}>
@@ -67,11 +71,7 @@ const SearchForm = () => {
                 .map(item => (
                   <StyledLi key={item.id}>
                     <Link type="submit" href={`/city/${item.slug}`}>
-                      <StyledLink
-                        onClick={() => {
-                          history.unshift(item); // not rly sure why it works, I feel like I am doing something illegal
-                        }}
-                      >
+                      <StyledLink onClick={() => handleClickCity(item)}>
                         {item.name}
                         <span>
                           ,&nbsp;
