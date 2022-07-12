@@ -1,24 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import { Provider } from 'react-redux';
 
-import { Search } from 'components';
-import { store } from 'store/store';
-import { useEffect } from 'react';
+import { LogInForm, Search } from 'components';
+import { useAuth } from 'hooks';
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        console.log(coords);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }, []);
-
+  // @ts-ignore
+  const isLoggedIn = useAuth();
   return (
     <>
       <Head>
@@ -27,12 +15,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Provider store={store}>
-        <div className="container">
-          <Search />
-          <Link href="/auth">Go to auth</Link>
-        </div>
-      </Provider>
+      <div className="container">{isLoggedIn ? <Search /> : <LogInForm />}</div>
+      {/* // i know it is not the best way but redux is not working how i expected
+      with different pages */}
     </>
   );
 };

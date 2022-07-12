@@ -10,9 +10,7 @@ const CityList: FunctionComponent = () => {
     <StyledCityList>
       {fiveCityList.map(city => (
         <StyledCityListItem value={city.id} key={city.id}>
-          <Link href={`/city/${city.slug}`}>
-            <a>{city.name}</a>
-          </Link>
+          <Link href={`/city/${city.slug}`}>{city.name}</Link>
         </StyledCityListItem>
       ))}
     </StyledCityList>

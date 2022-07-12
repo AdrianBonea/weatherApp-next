@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { FunctionComponent } from 'react';
+import { useDispatch } from 'react-redux';
 
-// eslint-disable-next-line import/no-unresolved
-import { useLogInForm } from '@hooks/useLogInForm';
+import { useLogInForm } from '@hooks';
+import { authActions } from 'store/authSlice';
+
 import {
   StyledLogInForm,
   StyledLabel,
@@ -12,8 +14,11 @@ import {
 } from './styled';
 
 const LogInForm: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const { handleSubmit, register, errors } = useLogInForm();
-  const onSubmit = (data: object) => console.log(data);
+  const onSubmit = () => {
+    dispatch(authActions.login());
+  };
 
   return (
     <StyledLogInForm onSubmit={handleSubmit(onSubmit)}>
