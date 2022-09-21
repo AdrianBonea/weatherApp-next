@@ -6,8 +6,9 @@ export const StyledSearchForm = styled.form`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
-  padding: 0.5rem;
+  height: 1005;
+  max-width: 500px;
+  margin-left: auto;
 `;
 
 export const StyledInput = styled.input`
@@ -70,6 +71,21 @@ export const StyledLink = styled.a`
   height: 2rem;
   border-radius: 0.25rem;
   padding: 0.5rem;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    color: #c56464;
+  }
+`;
+
+export const StyledButton = styled.button`
+  width: 60%;
+  height: 2rem;
+  border-radius: 0.25rem;
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   color: #333;

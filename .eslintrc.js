@@ -73,6 +73,7 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    'import/no-unresolved': 'off',
     'no-nested-ternary': 'off',
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',

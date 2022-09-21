@@ -15,6 +15,7 @@ import {
   StyledUl,
   StyledLi,
   StyledLink,
+  StyledButton,
 } from './styled';
 
 const SearchForm = () => {
@@ -55,43 +56,41 @@ const SearchForm = () => {
   };
 
   return (
-    <>
-      <StyledSearchForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput
-          placeholder="Enter city"
-          value={query}
-          {...(register('city'), { onChange: handleChange })}
-        />
-        <StyledError>{errors.city?.message}</StyledError>
-        {query.length > 0 ? (
-          <StyledUl>
-            {result.length > 0 &&
-              result
+    <StyledSearchForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledInput
+        placeholder="Enter city"
+        value={query}
+        {...(register('city'), { onChange: handleChange })}
+      />
+      <StyledError>{errors.city?.message}</StyledError>
+      {query.length > 0 ? (
+        <StyledUl>
+          {result.length > 0 &&
+            result
 
-                .map(item => (
-                  <StyledLi key={item.id}>
-                    <Link type="submit" href={`/city/${item.slug}`}>
-                      <StyledLink onClick={() => handleClickCity(item)}>
-                        {item.name}
-                        <span>
-                          ,&nbsp;
-                          {item.country}
-                        </span>
-                      </StyledLink>
-                    </Link>
-                  </StyledLi>
-                ))
-                .sort((a, b) => b.length - a.length)
-                .slice(0, 5)}
-          </StyledUl>
-        ) : (
-          <CityList history={history} />
-        )}
-      </StyledSearchForm>
-      <button type="submit" onClick={handleClick}>
-        LogOut
-      </button>
-    </>
+              .map(item => (
+                <StyledLi key={item.id}>
+                  <Link type="submit" href={`/city/${item.slug}`}>
+                    <StyledLink onClick={() => handleClickCity(item)}>
+                      {item.name}
+                      <span>
+                        ,&nbsp;
+                        {item.country}
+                      </span>
+                    </StyledLink>
+                  </Link>
+                </StyledLi>
+              ))
+              .sort((a, b) => b.length - a.length)
+              .slice(0, 5)}
+        </StyledUl>
+      ) : (
+        <CityList history={history} />
+      )}
+      <StyledButton type="submit" onClick={handleClick}>
+        Log Out
+      </StyledButton>
+    </StyledSearchForm>
   );
 };
 

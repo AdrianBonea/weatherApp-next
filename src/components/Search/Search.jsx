@@ -20,16 +20,16 @@ const Search = () => {
             setCity(data.name);
           });
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
       err => {
-        // eslint-disable-next-line no-console
-        console.log(err);
+        setCity(undefined);
       }
     );
   }, []);
   return (
     <Container>
-      <SearchForm />
       <LocalWeather cityName={city} temperatureData={weather.temp} />
+      <SearchForm />
     </Container>
   );
 };

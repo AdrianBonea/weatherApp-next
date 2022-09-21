@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 
 import { baseUrls, apiKeys } from '@constants/api';
 import { TodayWeather } from '@components';
-import { useAuth } from '@hooks';
+// import { useAuth } from '@hooks';
 import cities from 'constants/city.list.min.json';
 
 import { Container } from 'styles/styledCity';
@@ -13,7 +13,7 @@ import { Container } from 'styles/styledCity';
 // @ts-ignore
 const City: NextPage = ({ liveData }: object) => {
   // @ts-ignore
-  const isLoggedIn = useAuth();
+  const isLoggedIn = true; // useAuth();
 
   return (
     <>

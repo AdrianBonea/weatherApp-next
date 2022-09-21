@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { LogInForm, Search } from 'components';
-import { useAuth } from 'hooks';
+import { Search } from 'components';
+// import { useAuth } from 'hooks';
 
 const Home: NextPage = () => {
   // @ts-ignore
-  const isLoggedIn = useAuth();
+  // const isLoggedIn = useAuth(); // usefull for auth
   return (
     <>
       <Head>
@@ -15,9 +15,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container">{isLoggedIn ? <Search /> : <LogInForm />}</div>
-      {/* // i know it is not the best way but redux is not working how i expected
-      with different pages */}
+      <div className="">
+        <Search />
+      </div>
+      {/* <div className="container">{isLoggedIn ? <Search /> : <LogInForm />}</div> */}
+      {/* I will come back to auth later, for now I will work without(don't forget to import loginform) */}
     </>
   );
 };

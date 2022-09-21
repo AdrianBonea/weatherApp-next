@@ -5,9 +5,17 @@ import { Container } from './styled';
 const LocalWeather = ({ cityName, temperatureData }) => {
   return (
     <Container>
-      <h1>
-        Now in {cityName} are {temperatureData}°C
-      </h1>
+      {cityName === '' ? (
+        <h1>Loading..</h1>
+      ) : cityName === undefined ? (
+        <h1>
+          We cannot find your location, please grant us access to your location.
+        </h1>
+      ) : (
+        <h1>
+          Now in {cityName} are {temperatureData}°C
+        </h1>
+      )}
     </Container>
   );
 };
