@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { baseUrls, apiKeys } from 'constants/api';
 
 import { SearchForm, LocalWeather } from 'components';
+import { usePosition } from 'hooks';
+import { baseUrls, apiKeys } from 'constants/api';
 
 import { Container } from './styled';
 
 const Search = () => {
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState('');
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
@@ -26,6 +28,9 @@ const Search = () => {
       }
     );
   }, []);
+
+  console.log(usePosition());
+
   return (
     <Container>
       <LocalWeather cityName={city} temperatureData={weather.temp} />
