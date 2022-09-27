@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 
@@ -26,7 +26,7 @@ const SearchForm = () => {
 
   const [query, setQuery] = useState('');
   const [result, setResult] = useState([]);
-  const [history] = useState(fiveCityList);
+  const [history, setHistory] = useState(fiveCityList);
 
   // const cities = useAllCityList(); exced the limit of localStorage, so I need to use the slow and ugly way :(
   // console.log(cities);
@@ -52,7 +52,7 @@ const SearchForm = () => {
   };
 
   const handleClickCity = city => {
-    history.unshift(city); // not rly sure why it works, I feel like I am doing something illegal
+    setHistory(prevHistory => prevHistory.unshift(city));
   };
 
   return (

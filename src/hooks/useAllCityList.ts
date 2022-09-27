@@ -15,8 +15,7 @@ const useAllCityList = () => {
       setAllCityList(cities);
     }
     if (!once) once = true;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [allCityList.length, setAllCityList]);
 
   return allCityList;
 };

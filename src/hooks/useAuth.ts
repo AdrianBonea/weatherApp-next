@@ -16,9 +16,7 @@ const useAuth = () => {
     } else {
       setAuth(false);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn]);
+  }, [isLoggedIn, setAuth]);
 
   return auth;
 };

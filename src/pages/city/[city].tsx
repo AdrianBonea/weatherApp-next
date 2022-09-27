@@ -1,45 +1,13 @@
-/* eslint-disable no-use-before-define */
 import Link from 'next/link';
 import Head from 'next/head';
 import type { NextPage } from 'next';
 
+// import { useAuth } from '@hooks';
 import { baseUrls, apiKeys } from '@constants/api';
 import { TodayWeather } from '@components';
-// import { useAuth } from '@hooks';
 import cities from 'constants/city.list.min.json';
 
 import { Container } from 'styles/styledCity';
-
-// @ts-ignore
-const City: NextPage = ({ liveData }: object) => {
-  // @ts-ignore
-  const isLoggedIn = true; // useAuth();
-
-  return (
-    <>
-      <Head>
-        <title>{liveData.name}</title>
-        <meta name="description" content="Weather application" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {isLoggedIn ? (
-        <Container>
-          <Link href="/">Back</Link>
-          <TodayWeather
-            {...liveData}
-            cityName={liveData.name}
-            temp={liveData.main}
-            weather={liveData.weather[0]}
-          />
-        </Container>
-      ) : (
-        <Link href="/">You need to auth first!</Link>
-      )}
-    </>
-  );
-};
-
-export default City;
 
 // get city by id
 const getCityId = (param: string) => {
@@ -78,3 +46,34 @@ export async function getServerSideProps(context: {
     },
   };
 }
+
+// @ts-ignore
+const City: NextPage = ({ liveData }: object) => {
+  // @ts-ignore
+  const isLoggedIn = true; // useAuth();
+
+  return (
+    <>
+      <Head>
+        <title>{liveData.name}</title>
+        <meta name="description" content="Weather application" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {isLoggedIn ? (
+        <Container>
+          <Link href="/">Back</Link>
+          <TodayWeather
+            {...liveData}
+            cityName={liveData.name}
+            temp={liveData.main}
+            weather={liveData.weather[0]}
+          />
+        </Container>
+      ) : (
+        <Link href="/">You need to auth first!</Link>
+      )}
+    </>
+  );
+};
+
+export default City;
